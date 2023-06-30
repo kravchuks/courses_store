@@ -1,0 +1,91 @@
+<div class="auth">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#login" class="active">Log in</a></li>
+        <li class="tab col s6"><a href="#register">Sing up</a></li>
+      </ul>
+    </div>
+    <div id="login" class="col s6 offset-s3">
+      {{#if loginError}}
+        <div class="card-panel red lighten-2">{{loginError}}</div>
+      {{/if}}
+      <h1>Log in</h1>
+      <form action="/auth/login" method="post">
+        <div class="input-field">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="validate"
+            required
+          />
+          <label for="email">Email</label>
+          <span class="helper-text" data-error="Enter email"></span>
+        </div>
+        <div class="input-field">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="validate"
+            required
+          />
+          <label for="password">Password</label>
+          <span class="helper-text" data-error="Enter password"></span>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+        <p><a href="/auth/reset">Forgot your password?</a></p>
+        <button class="btn waves-effect waves-light" type="submit">Log in</button>
+      </form>
+    </div>
+    <div id="register" class="col s6 offset-s3">
+      {{#if registerError}}
+        <div class="card-panel red lighten-2">{{registerError}}</div>
+      {{/if}}
+      <h1>Sing up</h1>
+      <form action="/auth/register" method="post">
+        <div class="input-field">
+          <input
+            type="email"
+            name="email"
+            id="remail"
+            class="validate"
+            required
+          />
+          <label for="remail">Email</label>
+          <span class="helper-text" data-error="Enter email"></span>
+        </div>
+        <div class="input-field">
+          <input type="text" name="name" id="name" class="validate" required />
+          <label for="name">Name</label>
+          <span class="helper-text" data-error="Enter name"></span>
+        </div>
+        <div class="input-field">
+          <input
+            type="password"
+            name="password"
+            id="rpassword"
+            class="validate"
+            required
+          />
+          <label for="rpassword">Password</label>
+          <span class="helper-text" data-error="Enter password"></span>
+        </div>
+        <div class="input-field">
+          <input
+            type="password"
+            name="confirm"
+            id="confirm"
+            class="validate"
+            required
+          />
+          <label for="confirm">Confirm password</label>
+          <span class="helper-text" data-error="Enter confirm password"></span>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+        <button class="btn waves-effect waves-light" type="submit">Sing up</button>
+      </form>
+    </div>
+  </div>
+</div>

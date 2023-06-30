@@ -1,0 +1,46 @@
+<h1>Add course</h1>
+
+{{#if error}}
+  <div class="card red lighten-2">
+    <div class="card-content white-text">
+      <span class="card-title">Error</span>
+      <p>{{error}}</p>
+    </div>
+  </div>
+{{/if}}
+
+{{#if success}}
+  <div class="card green lighten-2">
+    <div class="card-content white-text">
+      <span class="card-title">Success</span>
+      <p>{{success}}</p>
+    </div>
+  </div>
+{{/if}}
+
+<form action="/add" method="POST" novalidate>
+  <div class="input-field">
+    <input id="title" name="title" type="text" class="validate" required value="{{data.title}}" />
+    <label for="title">Course title</label>
+    <span class="helper-text" data-error="Enter title"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="price" name="price" type="number" class="validate" required min="1" value="{{data.price}}" />
+    <label for="price">Price</label>
+    <span class="helper-text" data-error="Enter price"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="img" name="img" type="text" class="validate" required value="{{data.img}}"/>
+    <label for="img">Img URL</label>
+    <span class="helper-text" data-error="Enter URL"></span>
+  </div>
+
+  <input type="hidden" name="_csrf" value="{{csrf}}">
+
+  <button class="btn waves-effect waves-light">Add
+    course
+    <i class="material-icons right">send</i> 
+  </button>
+</form>
